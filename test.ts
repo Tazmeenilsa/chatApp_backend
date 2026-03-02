@@ -1,0 +1,1 @@
+import jwt from 'jsonwebtoken'; import { Types } from 'mongoose'; const id = new Types.ObjectId(); try { jwt.sign({ id }, 'secret'); console.log('success'); } catch (e: any) { console.error('Error:', e.message); }
