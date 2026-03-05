@@ -1,6 +1,7 @@
 import { Server } from "socket.io";
 import jwt from "jsonwebtoken";
 import { presenceHandler } from "./presence";
+import { chatHandler } from "./chatHandler";
 
 export const initializeSocket = (server: any) => {
     const io = new Server(server, {
@@ -33,6 +34,8 @@ export const initializeSocket = (server: any) => {
         console.log("User Connected:", socket.data.userId);
 
         presenceHandler(io, socket)
+        chatHandler(io, socket)
+
 
         socket.on("disconnect", () => {
             console.log("User Disconnected:", socket.data.userId);
